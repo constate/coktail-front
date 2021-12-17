@@ -1,0 +1,22 @@
+import React, { useState, useEffect } from "react";
+import DetailComponent from "../../components/detail/DetailComponent";
+import { useParams } from "react-router-dom";
+import client from "../../libs/api/client";
+const DetailContainer = () => {
+  const [itemId, setItemId] = useState("");
+  const [detailData, setDetailData] = useState({});
+  const params = useParams();
+
+  useEffect(() => {
+    getDetailData();
+  }, []);
+
+  const getDetailData = async () => {
+    const response = await client.get(`/coktail/${params.id}`);
+    setDetailData(response.data.data);
+  };
+
+  return <DetailComponent data={detailData} />;
+};
+
+export default DetailContainer;
