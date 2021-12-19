@@ -5,6 +5,8 @@ const ItemWrap = styled.div`
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 30px;
 `;
 
 const ItemWrapComponent = ({ ...rest }) => {
