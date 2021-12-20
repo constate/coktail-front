@@ -10,6 +10,7 @@ const CategoryComponent = ({ ...rest }) => {
         fontSize: "15px",
         fontWeight: "bold",
         fontFamily: "KOTRA_SONGEULSSI",
+        marginBottom: "20px",
       }}
       {...rest}
     />

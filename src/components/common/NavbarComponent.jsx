@@ -32,13 +32,33 @@ const NavbarLogo = styled.img`
   width: 5rem;
 `;
 
+const SearchInput = styled.input`
+  width: 100px;
+  text-align: center;
+  border: none;
+  border-bottom: 1px solid black;
+  outline: none;
+  box-sizing: border-box;
+`;
+
 const NavbarComponent = () => {
   const navigate = useNavigate();
   return (
     <NavbarBlock>
       <NavbarWrapper>
-        <div className="left">
-          <img
+        <div
+          className="left"
+          style={{
+            fontFamily: "KOTRA_SONGEULSSI",
+            fontWeight: "bold",
+            fontSize: "18px",
+          }}
+          onClick={() => {
+            window.scrollTo(0, 0);
+            navigate("/");
+          }}
+        >
+          {/* <img
             style={{ height: "40px" }}
             src="https://jeongmoon.s3.ap-northeast-2.amazonaws.com/1639732022219.png"
             alt="LOGO"
@@ -46,9 +66,10 @@ const NavbarComponent = () => {
               window.scrollTo(0, 0);
               navigate("/");
             }}
-          />
+          /> */}
+          칵테일파인더
         </div>
-        <div className="right">검색구역</div>
+        <div className="right"></div>
       </NavbarWrapper>
     </NavbarBlock>
   );

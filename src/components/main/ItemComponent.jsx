@@ -2,11 +2,9 @@ import React from "react";
 import styled from "styled-components";
 
 const CoktailItem = styled.div`
-  /* font-family: "GowunDodum-Regular"; */
-  /* font-family: "EliceDigitalBaeum_Bold"; */
   font-family: 'KOTRA_SONGEULSSI';
   width: 175px;
-  height: 185px;
+  height: 175px;
   margin: 0.5rem;
   border-radius: 5px;
   position: relative;
@@ -27,6 +25,11 @@ const CoktailItem = styled.div`
     bottom: 0px;
     background-color: #000;
   }
+
+  @media only screen and (min-width: 768px) {
+    width: 250px;
+    height: 250px;
+  }
 `;
 
 const CoktailTitle = styled.p`
@@ -34,8 +37,12 @@ const CoktailTitle = styled.p`
   font-size: 17px;
   font-weight: bold;
   text-align: center;
-  line-height: 185px;
+  line-height: 175px;
   position: relative;
+
+  @media only screen and (min-width: 768px) {
+    line-height: 250px;
+  }
 `;
 
 const ItemComponent = ({ data, onClickItem }) => {

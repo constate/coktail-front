@@ -11,14 +11,25 @@ import NavbarContainer from "./containers/common/NavbarContainer";
 import AdminSignInPage from "./pages/AdminSignInPage";
 import AdminSignUpPage from "./pages/AdminSignUpPage";
 import client from "./libs/api/client";
+import {
+  ToastsContainer,
+  ToastsStore,
+  ToastsContainerPosition,
+} from "react-toasts";
+import LoadingComponent from "./components/loading/LoadingComponent";
 
 function App() {
   const navigate = useNavigate();
   const [itemId, setItemId] = useState("");
   const [coktailData, setCoktailData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const [isAdminLogined, setIsAdminLogined] = useState(false);
   const [admin, setAdmin] = useState(null);
+
+  // useEffect(() => {
+  //   ToastsStore.success("랜더링 성공!!");
+  // }, []);
 
   useEffect(() => {
     getCoktailData();
@@ -27,6 +38,7 @@ function App() {
   const getCoktailData = async () => {
     const response = await client.get("/coktail");
     setCoktailData(response.data.dataList);
+    setLoading(false);
   };
 
   const randomCoktail = () => {
@@ -44,6 +56,7 @@ function App() {
           path="/"
           element={
             <MainPage
+              loading={loading}
               coktailData={coktailData}
               setItemId={setItemId}
               randomCoktail={randomCoktail}
@@ -65,6 +78,10 @@ function App() {
           }
         />
       </Routes>
+      <ToastsContainer
+        position={ToastsContainerPosition.BOTTOM_CENTER}
+        store={ToastsStore}
+      />
     </>
   );
 }

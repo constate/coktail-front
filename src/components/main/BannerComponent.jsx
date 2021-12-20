@@ -4,7 +4,7 @@ import styled from "styled-components";
 const BannerBlock = styled.div`
   width: 100%;
   height: 30vh;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   position: relative;
   cursor: pointer;
 `;
