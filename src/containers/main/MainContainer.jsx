@@ -4,15 +4,17 @@ import BannerComponent from "../../components/main/BannerComponent";
 import ItemComponent from "../../components/main/ItemComponent";
 import ItemWrapComponent from "../../components/common/ItemWrapComponent";
 import CategoryComponent from "../../components/main/CategoryComponent";
+import FooterComponent from "../../components/main/FooterComponent";
 
-const MainContainer = ({ coktailData, setItemId }) => {
+const MainContainer = ({ coktailData, setItemId, randomCoktail }) => {
   const navigate = useNavigate();
   const onClickItem = (id) => {
+    console.log("render");
     setItemId(id);
     navigate(`/detail/${id}`);
   };
   const onClickBanner = () => {
-    navigate("/intro");
+    randomCoktail();
   };
   return (
     <>
@@ -77,6 +79,7 @@ const MainContainer = ({ coktailData, setItemId }) => {
           }
         })}
       </ItemWrapComponent>
+      <FooterComponent />
     </>
   );
 };

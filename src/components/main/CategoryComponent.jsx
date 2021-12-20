@@ -7,7 +7,7 @@ const CategoryComponent = ({ ...rest }) => {
       style={{
         margin: "0 auto",
         textAlign: "center",
-        fontSize: "20px",
+        fontSize: "15px",
         fontWeight: "bold",
         fontFamily: "KOTRA_SONGEULSSI",
       }}

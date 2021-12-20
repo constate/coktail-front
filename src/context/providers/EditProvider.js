@@ -4,14 +4,15 @@ import EditContext from "../EditContext";
 const EditProvider = ({ children }) => {
   const [editInfo, setEditInfo] = useState({
     coktailName: "",
-    sweet: 1,
-    sour: 5,
-    bitter: 5,
-    alcoholDegree: 80,
-    kind: ["소주", "맥주"],
-    perifume: ["레몬"],
+    sweet: "",
+    sour: "",
+    bitter: "",
+    alcoholDegree: "",
+    kind: "",
+    perifume: "",
     cocktailContent: "",
     imgURL: "",
+    sauceKind: "",
   });
   return (
     <EditContext.Provider

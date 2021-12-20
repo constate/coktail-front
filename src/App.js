@@ -8,6 +8,8 @@ import EditPage from "./pages/EditPage";
 import IntroPage from "./pages/IntroPage";
 import LoginPage from "./pages/LoginPage";
 import NavbarContainer from "./containers/common/NavbarContainer";
+import AdminSignInPage from "./pages/AdminSignInPage";
+import AdminSignUpPage from "./pages/AdminSignUpPage";
 import client from "./libs/api/client";
 
 function App() {
@@ -15,19 +17,22 @@ function App() {
   const [itemId, setItemId] = useState("");
   const [coktailData, setCoktailData] = useState([]);
 
+  const [isAdminLogined, setIsAdminLogined] = useState(false);
+  const [admin, setAdmin] = useState(null);
+
   useEffect(() => {
     getCoktailData();
   }, []);
 
-  useEffect(() => {
-    if (itemId !== "") {
-      navigate(`detail/${itemId}`);
-    }
-  }, [itemId]);
-
   const getCoktailData = async () => {
     const response = await client.get("/coktail");
     setCoktailData(response.data.dataList);
+  };
+
+  const randomCoktail = () => {
+    const rand = Math.floor(Math.random() * coktailData.length);
+    const result = coktailData[rand];
+    navigate(`/detail/${result._id}`);
   };
 
   return (
@@ -37,12 +42,28 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={<MainPage coktailData={coktailData} setItemId={setItemId} />}
+          element={
+            <MainPage
+              coktailData={coktailData}
+              setItemId={setItemId}
+              randomCoktail={randomCoktail}
+            />
+          }
         />
         <Route path="/detail/:id" element={<DetailPage itemId={itemId} />} />
         <Route path="/edit" element={<EditPage />} />
         <Route path="/intro" element={<IntroPage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/adminsignup" element={<AdminSignUpPage />} />
+        <Route
+          path="/adminsignin"
+          element={
+            <AdminSignInPage
+              setIsAdminLogined={setIsAdminLogined}
+              setAdmin={setAdmin}
+            />
+          }
+        />
       </Routes>
     </>
   );

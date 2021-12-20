@@ -18,6 +18,20 @@ const TitleInput = styled.input`
   margin-bottom: 2rem;
   width: 100%;
   box-sizing: border-box;
+  text-align: center;
+`;
+
+const NumberInput = styled.input`
+  font-size: 1.5rem;
+  font-weight: bolder;
+  outline: none;
+  padding-bottom: 0.5rem;
+  border: none;
+  border-bottom: 1px solid grey;
+  margin-bottom: 2rem;
+  width: 50%;
+  box-sizing: border-box;
+  text-align: center;
 `;
 
 const QuillWrapper = styled.div`
@@ -67,6 +81,41 @@ const EditComponent = ({ onChangeField, imgURL, onChangeImage, editInfo }) => {
     onChangeField({ key: "coktailName", value });
   };
 
+  const onChangeSweet = (e) => {
+    const { value } = e.target;
+    onChangeField({ key: "sweet", value });
+  };
+
+  const onChangeSour = (e) => {
+    const { value } = e.target;
+    onChangeField({ key: "sour", value });
+  };
+
+  const onChangeBitter = (e) => {
+    const { value } = e.target;
+    onChangeField({ key: "bitter", value });
+  };
+  
+  const onChangeAlcoholDegree = (e) => {
+    const { value } = e.target;
+    onChangeField({ key: "alcoholDegree", value });
+  };
+
+  const onChangeKind = (e) => {
+    const { value } = e.target;
+    onChangeField({ key: "kind", value });
+  };
+
+  const onChangeSauceKind = (e) => {
+    const { value } = e.target;
+    onChangeField({ key: "sauceKind", value });
+  };
+
+  const onChangePerifume = (e) => {
+    const { value } = e.target;
+    onChangeField({ key: "perifume", value });
+  };
+
   const onChangeBody = (cocktailContent) => {
     onChangeField({ key: "cocktailContent", value: cocktailContent });
   };
@@ -78,34 +127,39 @@ const EditComponent = ({ onChangeField, imgURL, onChangeImage, editInfo }) => {
         onChange={onChangeTitle}
         placeholder="coktailName"
       />
-      <TitleInput
-        value={editInfo.coktailName}
-        onChange={onChangeTitle}
+      <NumberInput
+        value={editInfo.sweet}
+        onChange={onChangeSweet}
         placeholder="sweet 1 ~ 10"
       />
-      <TitleInput
-        value={editInfo.coktailName}
-        onChange={onChangeTitle}
+      <NumberInput
+        value={editInfo.sour}
+        onChange={onChangeSour}
         placeholder="sour 1 ~ 10"
       />
-      <TitleInput
-        value={editInfo.coktailName}
-        onChange={onChangeTitle}
+      <NumberInput
+        value={editInfo.bitter}
+        onChange={onChangeBitter}
         placeholder="bitter 1~ 10"
       />
-      <TitleInput
-        value={editInfo.coktailName}
-        onChange={onChangeTitle}
+      <NumberInput
+        value={editInfo.alcoholDegree}
+        onChange={onChangeAlcoholDegree}
         placeholder="alcoholDegree 1 ~ 100"
       />
       <TitleInput
-        value={editInfo.coktailName}
-        onChange={onChangeTitle}
+        value={editInfo.Kind}
+        onChange={onChangeKind}
         placeholder="kind array"
       />
       <TitleInput
-        value={editInfo.coktailName}
-        onChange={onChangeTitle}
+        value={editInfo.sauceKind}
+        onChange={onChangeSauceKind}
+        placeholder="saucekind array"
+      />
+      <TitleInput
+        value={editInfo.perifume}
+        onChange={onChangePerifume}
         placeholder="perifume array"
       />
       <QuillWrapper>
