@@ -1,20 +1,16 @@
 import React from "react";
+import styled from "styled-components";
 
+const CategoryTitle = styled.h2`
+  margin: 0 auto;
+  text-align: center;
+  font-size: 15px;
+  font-weight: bold;
+  font-family: "KOTRA_SONGEULSSI";
+  margin-bottom: 20px;
+`;
 const CategoryComponent = ({ ...rest }) => {
-  return (
-    // eslint-disable-next-line jsx-a11y/heading-has-content
-    <h2
-      style={{
-        margin: "0 auto",
-        textAlign: "center",
-        fontSize: "15px",
-        fontWeight: "bold",
-        fontFamily: "KOTRA_SONGEULSSI",
-        marginBottom: "20px",
-      }}
-      {...rest}
-    />
-  );
+  return <CategoryTitle {...rest} />;
 };
 
 export default CategoryComponent;

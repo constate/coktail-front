@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import ChartComponent from "./chart/ChartComponent";
+import DeletButtonComponets from "../delete/DeletButtonComponets";
 
 const DetailBlock = styled.div`
-  max-width: 700px;
+  max-width: 500px;
   margin: 0 auto;
   height: auto;
 `;
@@ -21,11 +22,21 @@ const CoktailTitle = styled.h2`
   font-family: "KOTRA_SONGEULSSI";
   text-align: center;
   font-size: 20px;
-  margin-top: 30px;
+  margin-top: 20px;
+  margin-bottom: 10px;
   font-weight: bold;
 `;
 
-const DetailComponent = ({ data }) => {
+const CoktailContentWrap = styled.div`
+  width: 85%;
+  height: auto;
+  margin: 0 auto;
+  font-size: 12px;
+  font-family: "GowunDodum-Regular";
+  padding-bottom: 20px;
+`;
+
+const DetailComponent = ({ data, isAdminLogined }) => {
   const {
     _id,
     category,
@@ -40,24 +51,22 @@ const DetailComponent = ({ data }) => {
     perifume,
     sauceKind,
   } = data;
-  console.log(data);
-  console.log(kind);
   return (
     <DetailBlock>
       <CoktailImg src={imgURL} style={{ width: "100%" }} />
       <CoktailTitle>{coktailName}</CoktailTitle>
+      <div
+        style={{
+          textAlign: "center",
+          fontSize: "15px",
+        }}
+      >
+        😜 {alcoholDegree}%
+      </div>
       <ChartWrap>
         <ChartComponent data={data} />
       </ChartWrap>
-      <div
-        style={{
-          width: "85%",
-          height: "auto",
-          margin: "50px auto",
-          fontSize: "12px",
-          fontFamily: "GowunDodum-Regular",
-        }}
-      >
+      <CoktailContentWrap>
         <hr />
         <br />
         🍸 들어간 술 : {kind} <br /> <br />
@@ -65,7 +74,8 @@ const DetailComponent = ({ data }) => {
         <hr />
         <br />
         <div dangerouslySetInnerHTML={{ __html: cocktailContent }} />
-      </div>
+      </CoktailContentWrap>
+      {isAdminLogined ? <DeletButtonComponets _id={_id} /> : ""}
     </DetailBlock>
   );
 };

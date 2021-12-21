@@ -1,10 +1,8 @@
-import React from 'react'
-import AdminSignInContainer from '../containers/auth/AdminSignInContainer'
+import React from "react";
+import AdminSignInContainer from "../containers/auth/AdminSignInContainer";
 
-function AdminSignInPage({...rest}) {
-    return (
-        <AdminSignInContainer {...rest} />
-    )
+function AdminSignInPage({ ...rest }) {
+  return <AdminSignInContainer {...rest} />;
 }
 
-export default AdminSignInPage
+export default AdminSignInPage;

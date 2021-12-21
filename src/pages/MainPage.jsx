@@ -1,6 +1,12 @@
 import React from "react";
 import MainContainer from "../containers/main/MainContainer";
-const MainPage = ({ loading, coktailData, setItemId, randomCoktail }) => {
+const MainPage = ({
+  loading,
+  coktailData,
+  setItemId,
+  randomCoktail,
+  onClickItem,
+}) => {
   return (
     <>
       <MainContainer
@@ -8,6 +14,7 @@ const MainPage = ({ loading, coktailData, setItemId, randomCoktail }) => {
         coktailData={coktailData}
         setItemId={setItemId}
         randomCoktail={randomCoktail}
+        onClickItem={onClickItem}
       />
     </>
   );

@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const CoktailItem = styled.div`
+  cursor: pointer;
   font-family: 'KOTRA_SONGEULSSI';
   width: 175px;
   height: 175px;
@@ -16,7 +17,7 @@ const CoktailItem = styled.div`
   }
   ::before {
     content: "";
-    opacity: 0.5;
+    opacity: 0.3;
     border-radius: 5px;
     position: absolute;
     top: 0px;

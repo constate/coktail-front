@@ -3,8 +3,7 @@ import DetailComponent from "../../components/detail/DetailComponent";
 import { useParams } from "react-router-dom";
 import client from "../../libs/api/client";
 import LoadingComponent from "../../components/loading/LoadingComponent";
-const DetailContainer = () => {
-  const [itemId, setItemId] = useState("");
+const DetailContainer = ({ isAdminLogined }) => {
   const [loading, setLoading] = useState(true);
   const [detailData, setDetailData] = useState({});
   const params = useParams();
@@ -21,7 +20,11 @@ const DetailContainer = () => {
 
   return (
     <>
-      {loading ? <LoadingComponent /> : <DetailComponent data={detailData} />}
+      {loading ? (
+        <LoadingComponent />
+      ) : (
+        <DetailComponent data={detailData} isAdminLogined={isAdminLogined} />
+      )}
     </>
   );
 };

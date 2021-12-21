@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Responsive from "./Responsive";
 import { useNavigate } from "react-router-dom";
+import SearchComponent from "./search/SearchComponent";
 
 const NavbarBlock = styled.div`
   padding: 1rem 0;
@@ -25,23 +26,11 @@ const NavbarWrapper = styled(Responsive)`
   }
   .right {
     display: flex;
+    align-items: center;
   }
 `;
 
-const NavbarLogo = styled.img`
-  width: 5rem;
-`;
-
-const SearchInput = styled.input`
-  width: 100px;
-  text-align: center;
-  border: none;
-  border-bottom: 1px solid black;
-  outline: none;
-  box-sizing: border-box;
-`;
-
-const NavbarComponent = () => {
+const NavbarComponent = ({ onClickSearch }) => {
   const navigate = useNavigate();
   return (
     <NavbarBlock>
@@ -58,18 +47,19 @@ const NavbarComponent = () => {
             navigate("/");
           }}
         >
-          {/* <img
-            style={{ height: "40px" }}
-            src="https://jeongmoon.s3.ap-northeast-2.amazonaws.com/1639732022219.png"
+          <img
+            style={{ height: "40px", cursor: "pointer" }}
+            src="https://jeongmoon.s3.ap-northeast-2.amazonaws.com/1640049481453.png"
             alt="LOGO"
             onClick={() => {
               window.scrollTo(0, 0);
               navigate("/");
             }}
-          /> */}
-          칵테일파인더
+          />
         </div>
-        <div className="right"></div>
+        <div className="right">
+          <SearchComponent onClickSearch={onClickSearch} />
+        </div>
       </NavbarWrapper>
     </NavbarBlock>
   );

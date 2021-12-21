@@ -6,6 +6,8 @@ import EditImage from "../common/image/EditImage";
 
 const EditorWrap = styled.div`
   padding-top: 2rem;
+  max-width: 500px;
+  margin: 0 auto;
 `;
 
 const TitleInput = styled.input`
@@ -42,7 +44,14 @@ const QuillWrapper = styled.div`
   }
 `;
 
-const EditComponent = ({ onChangeField, imgURL, onChangeImage, editInfo }) => {
+const EditComponent = ({
+  onChangeCoktail,
+  imgURL,
+  onChangeImage,
+  editInfo,
+  onChangeBody,
+}) => {
+  const { coktailName } = editInfo;
   const modules = {
     toolbar: [
       [{ header: [1, 2, false] }],
@@ -76,94 +85,65 @@ const EditComponent = ({ onChangeField, imgURL, onChangeImage, editInfo }) => {
     "background",
   ];
 
-  const onChangeTitle = (e) => {
-    const { value } = e.target;
-    onChangeField({ key: "coktailName", value });
-  };
-
-  const onChangeSweet = (e) => {
-    const { value } = e.target;
-    onChangeField({ key: "sweet", value });
-  };
-
-  const onChangeSour = (e) => {
-    const { value } = e.target;
-    onChangeField({ key: "sour", value });
-  };
-
-  const onChangeBitter = (e) => {
-    const { value } = e.target;
-    onChangeField({ key: "bitter", value });
-  };
-  
-  const onChangeAlcoholDegree = (e) => {
-    const { value } = e.target;
-    onChangeField({ key: "alcoholDegree", value });
-  };
-
-  const onChangeKind = (e) => {
-    const { value } = e.target;
-    onChangeField({ key: "kind", value });
-  };
-
-  const onChangeSauceKind = (e) => {
-    const { value } = e.target;
-    onChangeField({ key: "sauceKind", value });
-  };
-
-  const onChangePerifume = (e) => {
-    const { value } = e.target;
-    onChangeField({ key: "perifume", value });
-  };
-
-  const onChangeBody = (cocktailContent) => {
-    onChangeField({ key: "cocktailContent", value: cocktailContent });
-  };
-
   return (
     <EditorWrap>
       <TitleInput
+        name="coktailName"
         value={editInfo.coktailName}
-        onChange={onChangeTitle}
+        onChange={onChangeCoktail}
         placeholder="coktailName"
       />
+      <TitleInput
+        name="category"
+        value={editInfo.category}
+        onChange={onChangeCoktail}
+        placeholder="category 1~ 4"
+      />
       <NumberInput
+        name="sweet"
         value={editInfo.sweet}
-        onChange={onChangeSweet}
+        onChange={onChangeCoktail}
         placeholder="sweet 1 ~ 10"
       />
       <NumberInput
+        name="sour"
         value={editInfo.sour}
-        onChange={onChangeSour}
+        onChange={onChangeCoktail}
         placeholder="sour 1 ~ 10"
       />
       <NumberInput
+        name="bitter"
         value={editInfo.bitter}
-        onChange={onChangeBitter}
+        onChange={onChangeCoktail}
         placeholder="bitter 1~ 10"
       />
       <NumberInput
+        name="alcoholDegree"
         value={editInfo.alcoholDegree}
-        onChange={onChangeAlcoholDegree}
+        onChange={onChangeCoktail}
         placeholder="alcoholDegree 1 ~ 100"
       />
       <TitleInput
-        value={editInfo.Kind}
-        onChange={onChangeKind}
+        name="kind"
+        value={editInfo.kind}
+        onChange={onChangeCoktail}
         placeholder="kind array"
       />
       <TitleInput
+        name="sauceKind"
         value={editInfo.sauceKind}
-        onChange={onChangeSauceKind}
+        onChange={onChangeCoktail}
         placeholder="saucekind array"
       />
       <TitleInput
+        name="perifume"
         value={editInfo.perifume}
-        onChange={onChangePerifume}
+        onChange={onChangeCoktail}
         placeholder="perifume array"
       />
       <QuillWrapper>
         <ReactQuill
+          name="cocktailContent"
           theme="snow"
           modules={modules}
           formoats={formats}

@@ -1,7 +1,7 @@
-import React from 'react'
-import styled from 'styled-components'
-import palette from '../../libs/styles/palette'
-import AuthTemplate from './template/AuthTemplate'
+import React from "react";
+import styled from "styled-components";
+import palette from "../../libs/styles/palette";
+import AuthTemplate from "./template/AuthTemplate";
 
 const SignInFormBlcok = styled.div`
   box-sizing: border-box;
@@ -40,29 +40,31 @@ const StlyedButton = styled.button`
   color: #fff;
 `;
 
-function AdminSignInComponent({adminInfo, onClickSubmit, onChangeInput}) {
-    const {adminId, password} = adminInfo
-    return (
-        <AuthTemplate>
-            <SignInFormBlcok>
-                <h3>admin 로그인</h3>
-                <StyledInput
-                  name='adminId'
-                  value={adminId}
-                  placeholder='아이디'
-                  onChange={onChangeInput}                
-                />
-                <StyledInput
-                  name='password'
-                  type='password'
-                  value={password}
-                  placeholder='비밀번호'
-                  onChange={onChangeInput}                
-                />
-                <StlyedButton type="submit" onClick={onClickSubmit}>로그인</StlyedButton>
-            </SignInFormBlcok>
-        </AuthTemplate>
-    )
+function AdminSignInComponent({ adminInfo, onClickSubmit, onChangeInput }) {
+  const { adminId, password } = adminInfo;
+  return (
+    <AuthTemplate>
+      <SignInFormBlcok>
+        <h3>admin 로그인</h3>
+        <StyledInput
+          name="adminId"
+          value={adminId}
+          placeholder="아이디"
+          onChange={onChangeInput}
+        />
+        <StyledInput
+          name="password"
+          type="password"
+          value={password}
+          placeholder="비밀번호"
+          onChange={onChangeInput}
+        />
+        <StlyedButton type="submit" onClick={onClickSubmit}>
+          로그인
+        </StlyedButton>
+      </SignInFormBlcok>
+    </AuthTemplate>
+  );
 }
 
-export default AdminSignInComponent
+export default AdminSignInComponent;

@@ -7,13 +7,13 @@ import CategoryComponent from "../../components/main/CategoryComponent";
 import FooterComponent from "../../components/main/FooterComponent";
 import LoadingComponent from "../../components/loading/LoadingComponent";
 
-const MainContainer = ({ loading, coktailData, setItemId, randomCoktail }) => {
-  const navigate = useNavigate();
-  const onClickItem = (id) => {
-    console.log("render");
-    setItemId(id);
-    navigate(`/detail/${id}`);
-  };
+const MainContainer = ({
+  loading,
+  coktailData,
+  setItemId,
+  randomCoktail,
+  onClickItem,
+}) => {
   const onClickBanner = () => {
     randomCoktail();
   };
@@ -58,21 +58,6 @@ const MainContainer = ({ loading, coktailData, setItemId, randomCoktail }) => {
           <ItemWrapComponent>
             {coktailData.map((data) => {
               if (data.category === 3) {
-                return (
-                  <ItemComponent
-                    key={data["_id"]}
-                    data={data}
-                    setItemId={setItemId}
-                    onClickItem={onClickItem}
-                  />
-                );
-              }
-            })}
-          </ItemWrapComponent>
-          <CategoryComponent>랜덤을 만들어볼까함</CategoryComponent>
-          <ItemWrapComponent>
-            {coktailData.map((data) => {
-              if (data.category === undefined) {
                 return (
                   <ItemComponent
                     key={data["_id"]}

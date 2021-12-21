@@ -4,6 +4,7 @@ import { Route, Routes, useNavigate } from "react-router-dom";
 import GlobalStyle from "./libs/styles/GlobalStyle";
 import MainPage from "./pages/MainPage";
 import DetailPage from "./pages/DetailPage";
+import SearchPage from "./pages/SearchPage";
 import EditPage from "./pages/EditPage";
 import IntroPage from "./pages/IntroPage";
 import LoginPage from "./pages/LoginPage";
@@ -16,13 +17,13 @@ import {
   ToastsStore,
   ToastsContainerPosition,
 } from "react-toasts";
-import LoadingComponent from "./components/loading/LoadingComponent";
 
 function App() {
   const navigate = useNavigate();
   const [itemId, setItemId] = useState("");
   const [coktailData, setCoktailData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [searchName, setSearchName] = useState("");
 
   const [isAdminLogined, setIsAdminLogined] = useState(false);
   const [admin, setAdmin] = useState(null);
@@ -30,6 +31,32 @@ function App() {
   // useEffect(() => {
   //   ToastsStore.success("랜더링 성공!!");
   // }, []);
+
+  // 자동 로그인
+  useEffect(() => {
+    const token = localStorage.getItem("accessToken")
+      ? localStorage.getItem("accessToken")
+      : null;
+
+    const test = async () => {
+      client.defaults.headers["authorization"] = token;
+      let result;
+      try {
+        result = await client.get("/user");
+      } catch (error) {
+        console.log("토큰로그인에러 >>>>", error);
+      }
+
+      const targetUser = result.data.data;
+      setAdmin(targetUser);
+      setIsAdminLogined(true);
+    };
+
+    if (token) {
+      test();
+      console.log("자동로그인완료");
+    }
+  }, []);
 
   useEffect(() => {
     getCoktailData();
@@ -46,6 +73,10 @@ function App() {
     const result = coktailData[rand];
     navigate(`/detail/${result._id}`);
   };
+  const onClickItem = (id) => {
+    setItemId(id);
+    navigate(`/detail/${id}`);
+  };
 
   return (
     <>
@@ -60,10 +91,28 @@ function App() {
               coktailData={coktailData}
               setItemId={setItemId}
               randomCoktail={randomCoktail}
+              onClickItem={onClickItem}
             />
           }
         />
-        <Route path="/detail/:id" element={<DetailPage itemId={itemId} />} />
+        <Route
+          path="/search"
+          element={
+            <SearchPage
+              searchName={searchName}
+              setSearchName={setSearchName}
+              coktailData={coktailData}
+              setItemId={setItemId}
+              onClickItem={onClickItem}
+            />
+          }
+        />
+        <Route
+          path="/detail/:id"
+          element={
+            <DetailPage itemId={itemId} isAdminLogined={isAdminLogined} />
+          }
+        />
         <Route path="/edit" element={<EditPage />} />
         <Route path="/intro" element={<IntroPage />} />
         <Route path="/login" element={<LoginPage />} />

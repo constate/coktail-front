@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const EditActionButtonWrapper = styled.div`
+const DeleteActionButtonWrapper = styled.div`
   margin-top: 2rem;
   margin-bottom: 3rem;
   display: flex;
@@ -26,12 +26,12 @@ const StyledButton = styled.div`
   }
 `;
 
-function CreateBoardButton({ onCreateCok }) {
+function DeletButtonComponets({ _id, onRemove }) {
   return (
-    <EditActionButtonWrapper>
-      <StyledButton onClick={onCreateCok}>글쓰기</StyledButton>
-    </EditActionButtonWrapper>
+    <DeleteActionButtonWrapper>
+      <StyledButton onClick={() => onRemove(_id)}>삭제</StyledButton>
+    </DeleteActionButtonWrapper>
   );
 }
 
-export default CreateBoardButton;
+export default DeletButtonComponets;

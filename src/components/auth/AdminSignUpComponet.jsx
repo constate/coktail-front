@@ -1,7 +1,7 @@
-import React from 'react'
-import styled from 'styled-components';
-import palette from '../../libs/styles/palette';
-import AuthTemplate from './template/AuthTemplate';
+import React from "react";
+import styled from "styled-components";
+import palette from "../../libs/styles/palette";
+import AuthTemplate from "./template/AuthTemplate";
 
 const SignUpFormBlcok = styled.div`
   box-sizing: border-box;
@@ -40,48 +40,47 @@ const StlyedButton = styled.button`
   color: #fff;
 `;
 
+function AdminSignUpComponet({ onClickSubmit, adminInfo, onChangeInput }) {
+  const { adminId, email, password, passwordConfirm } = adminInfo;
 
-function AdminSignUpComponet({onClickSubmit, adminInfo, onChangeInput}) {
-    const {adminId, email, password, passwordConfirm } = adminInfo
-
-    return (
-        <>
-          <AuthTemplate>
-            <SignUpFormBlcok>
-              <h3>회원가입</h3>
-              <StyledInput
-                name="adminId"
-                value={adminId}
-                placeholder="아이디를 입력하세요"
-                onChange={onChangeInput}
-              />
-              <StyledInput
-                name="email"
-                value={email}
-                placeholder="이메일을 입력하세요"
-                onChange={onChangeInput}
-              />
-              <StyledInput
-                type="password"
-                name="password"
-                value={password}
-                placeholder="비밀번호을 입력하세요"
-                onChange={onChangeInput}
-              />
-              <StyledInput
-                type="password"
-                name="passwordConfirm"
-                value={passwordConfirm}
-                placeholder="비밀번호확인 입력하세요"
-                onChange={onChangeInput}
-              />
-              <StlyedButton type="submit" onClick={onClickSubmit}>
-                회원가입
-              </StlyedButton>
-            </SignUpFormBlcok>
-          </AuthTemplate>
-        </>
-    )
+  return (
+    <>
+      <AuthTemplate>
+        <SignUpFormBlcok>
+          <h3>회원가입</h3>
+          <StyledInput
+            name="adminId"
+            value={adminId}
+            placeholder="아이디를 입력하세요"
+            onChange={onChangeInput}
+          />
+          <StyledInput
+            name="email"
+            value={email}
+            placeholder="이메일을 입력하세요"
+            onChange={onChangeInput}
+          />
+          <StyledInput
+            type="password"
+            name="password"
+            value={password}
+            placeholder="비밀번호을 입력하세요"
+            onChange={onChangeInput}
+          />
+          <StyledInput
+            type="password"
+            name="passwordConfirm"
+            value={passwordConfirm}
+            placeholder="비밀번호확인 입력하세요"
+            onChange={onChangeInput}
+          />
+          <StlyedButton type="submit" onClick={onClickSubmit}>
+            회원가입
+          </StlyedButton>
+        </SignUpFormBlcok>
+      </AuthTemplate>
+    </>
+  );
 }
 
-export default AdminSignUpComponet
+export default AdminSignUpComponet;

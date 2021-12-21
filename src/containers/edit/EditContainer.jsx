@@ -41,19 +41,29 @@ const EditContainer = () => {
     }
   };
 
-  const onChangeField = (payload) => {
-    const { key, value } = payload;
+  const onChangeBody = (cocktailContent) => {
     setEditInfo({
       ...editInfo,
-      [key]: value,
+      cocktailContent: cocktailContent,
     });
   };
+
+  const onChangeCoktail = (e) => {
+    const { name, value } = e.target;
+
+    setEditInfo({
+      ...editInfo,
+      [name]: value,
+    });
+  };
+
   return (
     <EditComponent
-      onChangeField={onChangeField}
+      onChangeCoktail={onChangeCoktail}
       imgURL={imgInfo.imgURL}
       onChangeImage={onChangeImage}
       editInfo={editInfo}
+      onChangeBody={onChangeBody}
     />
   );
 };
