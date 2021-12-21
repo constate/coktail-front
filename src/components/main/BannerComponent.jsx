@@ -13,7 +13,7 @@ const BannerComponent = ({ onClickBanner }) => {
   return (
     <BannerBlock onClick={onClickBanner}>
       <video
-        playsinline
+        playsInline
         muted
         autoPlay
         loop

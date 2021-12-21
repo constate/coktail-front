@@ -31,6 +31,10 @@ const CoktailItem = styled.div`
     width: 250px;
     height: 250px;
   }
+  @media only screen and (max-width: 372px) {
+    width: 100%;
+    /* height: 250px; */
+  }
 `;
 
 const CoktailTitle = styled.p`
