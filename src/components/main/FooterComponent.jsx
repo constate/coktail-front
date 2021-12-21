@@ -27,9 +27,9 @@ const FooterComponent = () => {
     <FooterWrap>
       <div style={{ marginBottom: "10px" }}>Team Project</div>
       <ul>
-        <MemberElement>🅵김성현</MemberElement>
-        <MemberElement>🅱표정문</MemberElement>
-        <MemberElement>🅵남원우</MemberElement>
+        <MemberElement>Ⓕ김성현</MemberElement>
+        <MemberElement>Ⓑ표정문</MemberElement>
+        <MemberElement>Ⓕ남원우</MemberElement>
       </ul>
     </FooterWrap>
   );
